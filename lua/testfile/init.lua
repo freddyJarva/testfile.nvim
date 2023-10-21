@@ -43,7 +43,6 @@ M.create = function ()
         return
     end
 
-    -- TODO make this change depending on extension/language
     local testfile = testfile_dir..'/'..cfg.test_prefix..stub..cfg.test_suffix..'.'..extension
 
     local testbuf = vim.fn.bufadd(testfile)
