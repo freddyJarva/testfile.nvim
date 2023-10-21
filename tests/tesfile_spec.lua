@@ -22,4 +22,14 @@ describe("testfile", function ()
 
         assert.are.same(spec_dir..'/tests/Controller/LameControllerTest.php', vim.api.nvim_buf_get_name(0))
     end)
+
+    it("does nothing if test dir translates to current buffers dir", function()
+        vim.fn.mkdir(spec_dir)
+        vim.fn.chdir(spec_dir)
+        local bufnr = vim.fn.bufadd(spec_dir..'/tests/Controller/LameController.php')
+        vim.cmd.buffer(bufnr)
+        require("testfile").create_test()
+
+        assert.are.same(spec_dir..'/tests/Controller/LameController.php', vim.api.nvim_buf_get_name(0))
+    end)
 end)
