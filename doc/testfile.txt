@@ -1,0 +1,15 @@
+=======================================================================================
+                                                                 *testfile.nvim*
+
+This plugin will create a buffer pointing to a testfile for the current buffer
+
+                                                        *testfile.create()*
+
+testfile.create()
+
+    The current buffers name, and the config for its file extension, will be used to create a new buffer with a test path. >
+
+        testfile.create()
+<
+
+vim:tw=78:ts=8:ft=help:norl:

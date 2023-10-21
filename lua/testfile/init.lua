@@ -23,7 +23,7 @@ M.config = {
     _default_config
 }
 
-M.create_test = function ()
+M.create = function ()
     local current_file = vim.api.nvim_buf_get_name(0)
     if current_file == vim.fn.fnamemodify(current_file, ':.') then
         print('current file must exist under cwd. aborting test creation.')
