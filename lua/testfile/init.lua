@@ -1,6 +1,13 @@
 local M = {}
 
 local _default_config = {
+}
+
+M._reset_config = function ()
+    M.config = _default_config
+end
+
+M.config = {
     php = {
         test_suffix = 'Test',
         test_prefix = '',
@@ -13,14 +20,6 @@ local _default_config = {
         test_dir = 'tests',
         src_dir = 'lua',
     },
-}
-
-M._reset_config = function ()
-    M.config = _default_config
-end
-
-M.config = {
-    _default_config
 }
 
 M.create = function ()
