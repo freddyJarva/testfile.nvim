@@ -28,7 +28,7 @@ M._is_testfile = function (file_stub, cfg)
     and string.sub(file_stub, -string.len(cfg.test_suffix)) == cfg.test_suffix
 end
 
-M.config = M._reset_config()
+M._reset_config()
 
 M.toggle = function ()
     local current_file = vim.api.nvim_buf_get_name(0)
