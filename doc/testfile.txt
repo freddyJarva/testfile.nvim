@@ -11,5 +11,14 @@ testfile.create()
 
         testfile.create()
 <
+                                                           *testfile.toggle()*
+
+testfile.toggle()
+
+    Toggle between a test buffer or srfile buffer.
+    The current buffers name, and the config for its file extension, will be used to create or switch to its source/test buffer equivalent. >
+
+        testfile.toggle()
+<
 
 vim:tw=78:ts=8:ft=help:norl:
