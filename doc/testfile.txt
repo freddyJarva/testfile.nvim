@@ -1,21 +1,14 @@
 =======================================================================================
                                                                  *testfile.nvim*
 
-This plugin will create a buffer pointing to a testfile for the current buffer
+This plugin will help with switching and creating buffers that relate the
+current source/test file
 
-                                                        *testfile.create()*
-
-testfile.create()
-
-    The current buffers name, and the config for its file extension, will be used to create a new buffer with a test path. >
-
-        testfile.create()
-<
                                                            *testfile.toggle()*
 
 testfile.toggle()
 
-    Toggle between a test buffer or srfile buffer.
+    Toggle between a test buffer or srcfile buffer.
     The current buffers name, and the config for its file extension, will be used to create or switch to its source/test buffer equivalent. >
 
         testfile.toggle()

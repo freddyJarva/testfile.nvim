@@ -20,41 +20,47 @@ describe("testfile", function ()
 
     it("can create a new buffer with a testfile path from current buffer - php config", function()
         vim.fn.chdir(spec_dir)
-        local bufnr = vim.fn.bufadd(spec_dir..'/src/Controller/LameController.php')
+        local bufnr = vim.fn.bufadd(spec_dir..'/src/controller/LameController.php')
         vim.cmd.buffer(bufnr)
-        require("testfile").create()
+        require("testfile").toggle()
 
-        assert.are.same(spec_dir..'/tests/Controller/LameControllerTest.php', vim.api.nvim_buf_get_name(0))
+        assert.are.same(spec_dir..'/tests/controller/LameControllerTest.php', vim.api.nvim_buf_get_name(0))
+    end)
+
+    it("can create a new buffer with a srcfile  path from current buffer - php config", function()
+        vim.fn.chdir(spec_dir)
+        local bufnr = vim.fn.bufadd(spec_dir..'/tests/controller/LameControllerTest.php')
+        vim.cmd.buffer(bufnr)
+        require("testfile").toggle()
+
+        assert.are.same(spec_dir..'/src/controller/LameController.php', vim.api.nvim_buf_get_name(0))
     end)
 
     it("can create a new buffer with a testfile path from current buffer - lua config", function()
         vim.fn.chdir(spec_dir)
         local bufnr = vim.fn.bufadd(spec_dir..'/lua/somename/awesome.lua')
         vim.cmd.buffer(bufnr)
-        require("testfile").create()
+        require("testfile").toggle()
 
         assert.are.same(spec_dir..'/tests/somename/awesome_spec.lua', vim.api.nvim_buf_get_name(0))
     end)
 
-    it("does nothing if test dir translates to current buffers dir", function()
+    it("can create a new buffer with a testfile path from current buffer - go config", function()
         vim.fn.chdir(spec_dir)
-        local bufnr = vim.fn.bufadd(spec_dir..'/tests/Controller/LameController.php')
+        local bufnr = vim.fn.bufadd(spec_dir..'/awesome.go')
         vim.cmd.buffer(bufnr)
-        require("testfile").create()
+        require("testfile").toggle()
 
-        assert.are.same(spec_dir..'/tests/Controller/LameController.php', vim.api.nvim_buf_get_name(0))
+        assert.are.same(spec_dir..'/awesome_test.go', vim.api.nvim_buf_get_name(0))
     end)
 
-
-    it("does nothing if config doesn't exist for current buffers file extension", function()
-        local testfile = require('testfile')
-        testfile.config.php = nil
+    it("can create a new buffer with a srcfile path from current buffer - go config", function()
         vim.fn.chdir(spec_dir)
-        local bufnr = vim.fn.bufadd(spec_dir..'/src/Controller/LameController.php')
+        local bufnr = vim.fn.bufadd(spec_dir..'/awesome_test.go')
         vim.cmd.buffer(bufnr)
-        testfile.create()
+        require("testfile").toggle()
 
-        assert.are.same(spec_dir..'/src/Controller/LameController.php', vim.api.nvim_buf_get_name(0))
+        assert.are.same(spec_dir..'/awesome.go', vim.api.nvim_buf_get_name(0))
     end)
 
     it("can create a new buffer with a srcfile path if current buffer is testfile", function()

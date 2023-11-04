@@ -1,3 +1,2 @@
-testfile.create()	testfile.txt	/*testfile.create()*
 testfile.nvim	testfile.txt	/*testfile.nvim*
 testfile.toggle()	testfile.txt	/*testfile.toggle()*
