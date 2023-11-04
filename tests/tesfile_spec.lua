@@ -56,4 +56,14 @@ describe("testfile", function ()
 
         assert.are.same(spec_dir..'/src/Controller/LameController.php', vim.api.nvim_buf_get_name(0))
     end)
+
+    it("can create a new buffer with a srcfile path if current buffer is testfile", function()
+        local testfile = require('testfile')
+        vim.fn.chdir(spec_dir)
+        local bufnr = vim.fn.bufadd(spec_dir..'/tests/Controller/LameControllerTest.php')
+        vim.cmd.buffer(bufnr)
+        testfile.toggle()
+
+        assert.are.same(spec_dir..'/src/Controller/LameController.php', vim.api.nvim_buf_get_name(0))
+    end)
 end)
